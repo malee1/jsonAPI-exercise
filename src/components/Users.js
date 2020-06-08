@@ -8,25 +8,25 @@ export class Users extends Component {
         };
     }
 
-    componentDidMount() {
-        fetch("https://jsonplaceholder.typicode.com/users")
-            .then((res) => res.json())
-            .then((data) =>
-            this.setState({
-                users: data,
-                })
-            );
-    }
+    // componentDidMount() {
+    //     fetch("https://jsonplaceholder.typicode.com/users")
+    //         .then((res) => res.json())
+    //         .then((data) =>
+    //         this.setState({
+    //             users: data,
+    //             })
+    //         );
+    // }
 
     //Build linking to an express server - not used
-    //     componentDidMount() {
-    //         fetch("http://localhost:3002/users")
-    //             .then(res => res.json())
-    //             .then(data => this.setState({
-    //                 users: data
-    //             })
-    //             )
-    // }
+        componentDidMount() {
+            fetch("http://localhost:3002/users")
+                .then(res => res.json())
+                .then(data => this.setState({
+                    users: data
+                }))
+                .catch(err => console.log('ERROR: ' + err));
+    }
 
     render() {
      const usernames = this.state.users.map((user) => (

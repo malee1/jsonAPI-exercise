@@ -8,22 +8,23 @@ export default class Posts extends Component {
         }
     }
 
+    // componentDidMount() {
+    //     fetch('https://jsonplaceholder.typicode.com/posts')
+    //         .then(res => res.json())
+    //         .then(data => this.setState({
+    //             posts: data
+    //         }))
+    // }
+
+    //Build linking to an express server - not used
     componentDidMount() {
-        fetch('https://jsonplaceholder.typicode.com/posts')
+        fetch("http://localhost:3002/posts")
             .then(res => res.json())
             .then(data => this.setState({
                 posts: data
             }))
+            .catch(err => console.log('ERROR: ' + err));
     }
-
-    //Build linking to an express server - not used
-    // componentDidMount() {
-    //     fetch("http://localhost:3002/posts")
-    //         .then(res => res.json())
-    //         .then(data => this.setState({
-    //             posts: data
-    //         }));
-    // }
 
     render() {
         const posts = this.state.posts.map(post => (
